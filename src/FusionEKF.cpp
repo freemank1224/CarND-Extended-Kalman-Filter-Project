@@ -16,6 +16,7 @@ FusionEKF::FusionEKF() {
 
   previous_timestamp_ = 0;
 
+
   // initializing matrices
   R_laser_ = MatrixXd(2, 2);
   R_radar_ = MatrixXd(3, 3);
@@ -52,8 +53,8 @@ FusionEKF::FusionEKF() {
   		0,0,0,1;
 
   // Set the acceleration noise components
-  noise_ax = 9;
-  noise_ay = 9;
+  float noise_ax = 9;
+  float noise_ay = 9;
 
 }
 
@@ -98,7 +99,7 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
     }
 
     // done initializing, no need to predict or update
-    previous_timestamp_ = measurement_pack.timestamp;	// Update time step
+    previous_timestamp_ = measurement_pack.timestamp_;	// Update time step
 
     is_initialized_ = true;
     return;
@@ -118,9 +119,9 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
   float dt = (measurement_pack.timestamp_ - previous_timestamp_)/1000000.0;
   previous_timestamp_ = measurement_pack.timestamp_;
 
-  float dt2 = dt*dt;
-  float dt3 = dt2*dt;
-  float dt4 = dt3*dt;
+  float dt_2 = dt*dt;
+  float dt_3 = dt_2*dt;
+  float dt_4 = dt_3*dt;
 
   ekf_.F_(0,2) = dt;
   ekf_.F_(1,3) = dt;
