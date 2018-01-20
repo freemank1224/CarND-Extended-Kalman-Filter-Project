@@ -8,9 +8,13 @@ using Eigen::MatrixXd;
 using Eigen::VectorXd;
 using std::vector;
 
+float noise_ax = 9;
+float noise_ay = 9;
+
 /*
  * Constructor.
  */
+
 FusionEKF::FusionEKF() {
   is_initialized_ = false;
 
@@ -53,8 +57,7 @@ FusionEKF::FusionEKF() {
   		0,0,0,1;
 
   // Set the acceleration noise components
-  float noise_ax = 9;
-  float noise_ay = 9;
+
 
 }
 
