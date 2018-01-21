@@ -58,10 +58,10 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
 	// Perform Cartesian to Polar transformation
 	float rho, phi, rho_dot;
 
-	px = x_(0);
-	py = x_(1);
-	vx = x_(2);
-	vy = x_(3);
+	float px = x_(0);
+	float py = x_(1);
+	float vx = x_(2);
+	float vy = x_(3);
 
 	rho = sqrt(px*px + py*py);
 	phi = atan2(py,px);
