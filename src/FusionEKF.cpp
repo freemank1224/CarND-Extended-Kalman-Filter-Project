@@ -29,12 +29,12 @@ FusionEKF::FusionEKF() {
 
   //measurement covariance matrix - laser
   R_laser_ << 0.0225, 0,
-        0, 0.0225;
+        	  0, 0.0225;
 
   //measurement covariance matrix - radar
   R_radar_ << 0.09, 0, 0,
-        0, 0.0009, 0,
-        0, 0, 0.09;
+        	  0, 0.0009, 0,
+        	  0, 0, 0.09;
 
   /**
   TODO:
@@ -46,15 +46,15 @@ FusionEKF::FusionEKF() {
 
   ekf_.P_ = MatrixXd(4,4);
   ekf_.P_ << 1,0,0,0,
-  		0,1,0,0,
-  		0,0,1000,0,
-  		0,0,0,1000;
+  			 0,1,0,0,
+  			 0,0,1000,0,
+  			 0,0,0,1000;
 
   ekf_.F_ = MatrixXd(4,4);
   ekf_.F_ << 1,0,1,0,
-  		0,1,0,1,
-  		0,0,1,0,
-  		0,0,0,1;
+  			 0,1,0,1,
+  			 0,0,1,0,
+  			 0,0,0,1;
 
   // Set the acceleration noise components
 
@@ -105,6 +105,7 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
     previous_timestamp_ = measurement_pack.timestamp_;	// Update time step
 
     is_initialized_ = true;
+
     return;
   }
 
@@ -172,6 +173,6 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
 
 
   // print the output
-  cout << "x_ = " << ekf_.x_ << endl;
-  cout << "P_ = " << ekf_.P_ << endl;
+  //cout << "x_ = " << ekf_.x_ << endl;
+  //cout << "P_ = " << ekf_.P_ << endl;
 }
